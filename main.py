@@ -1,7 +1,7 @@
 import requests
 
 def geturl(unique):
-    return f"https://www.alphavantage.co/query?function={unique}&apikey="
+    return f'https://www.alphavantage.co/query?function={unique}&apikey={open("api_key.txt")}'
 
 
 
