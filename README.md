@@ -11,7 +11,7 @@ Alpha Vantage API key (free)
 Installation
 Install Python 3.x from the official website: https://www.python.org/downloads/
 Sign up for a free Alpha Vantage API key: https://www.alphavantage.co/support/#api-key
-Replace the KM64K0ZDZRNTZXB0 placeholder in the geturl function with your API key
+Replace the placeholder in the geturl function with your API key
 Usage
 Run the stock_screener.py script
 Enter '1' to search for a stock
