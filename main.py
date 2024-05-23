@@ -1,20 +1,20 @@
 import requests
 
 def geturl(unique):
-    return f'https://www.alphavantage.co/query?function={unique}&apikey={open("api_key.txt")}'
+    return f'https://www.alphavantage.co/query?function={unique}&apikey=QCAE5ON4ZPRHM389'
 
 
 
 def getdata(url):
     return requests.get(url).json()
     
- 
+topics = ["blockchain", "earnings", "ipo", "mergers_and_acquisitions", "financial_markets", "economy_fiscal", "economy_monetary", "economy_macro", "energy_transportation", "finance", "life_sciences", "manufacturing", "real_estate", "retail_wholesale", "technology"]
 
 
 def main():
     global stock
     global apikey
-    apikey = open("api_key.txt")
+    #apikey = open("api_key.txt")
 
     while True:
         try:
@@ -37,6 +37,32 @@ def main():
                     "close"  : price_data["Time Series (5min)"][0]["4. close"] }
                 basicdata["price"] = price
                 print(basicdata)
+
+            if action =="2":
+                i = 0
+                search = input("Search by Topic or by Stock?\n\'1\' for Topic\n\'2\' for Stock\n\'.\' for all News")
+                if search == ".":
+                    news = getdata(geturl("NEWS_SENTIMENT"))
+                elif search == "2":
+                    ticker = input("Enter Ticker Symbol")
+                    news = getdata(geturl(f"NEWS_SENTIMENT&tickers={ticker}"))
+                elif search == "1":
+                    while True:
+                        topic = input("Enter Topic")
+                        if topic in topics:
+                            news = getdata(geturl(f"NEWS_SENTIMENT&topics={topic}"))
+                            break
+                        else:
+                            print("Cant find Topic. Please choose one of the provided topics", topics)
+                newsfeed = {
+                    "title"  : news["feed"][i]["title"],
+                    "summary": news["feed"][i]["summary"],
+                    "newsurl": news["feed"][i]["url"],
+                    "flow"   : news["feed"][i]["overall_sentiment_label"]
+                }
+                for i in newsfeed:
+                    print(f"News!\n>>>{newsfeed['title']}<<<\n{newsfeed['summary']}\nSource:{newsfeed['newsurl']}\nExperts say, the Market is {newsfeed['flow']}.")
+                    i+=1
         except BadRequest:
             print("Got no API answer")
         except:
