@@ -1,28 +1,29 @@
-Personal Stock-Screener
-A simple Python application that allows users to retrieve real-time stock information using the Alpha Vantage API.
+Personal Stock Screener 
+Project Description
+The Personal Stock Screener is a Python-based application designed to provide users with real-time information about specific stocks and financial news. The application utilizes the Alpha Vantage API to fetch data and presents it in a user-friendly format.
 
 Features
-Search for a specific stock by symbol
-Display basic stock information, including symbol, name, and region
-Retrieve real-time price data, including open, high, low, and close prices
+Search for stock information by symbol
+Display real-time price data (open, high, low, close)
+Search for financial news by topic or stock
+Display news headlines, summaries, URLs, and overall sentiment
 Requirements
 Python 3.x
-Alpha Vantage API key (free)
-Installation
-Install Python 3.x from the official website: https://www.python.org/downloads/
-Sign up for a free Alpha Vantage API key: https://www.alphavantage.co/support/#api-key
-Replace the placeholder in the geturl function with your API key
+Requests library
+Alpha Vantage API key
+Setup
+Install Python 3.x from python.org
+Install the Requests library using pip:
+Copy code
+pip install requests
+Sign up for a free Alpha Vantage API key at alphavantage.co
 Usage
-Run the stock_screener.py script
-Enter '1' to search for a stock
-Input the stock symbol when prompted
-View the stock information displayed in the console
-Code Structure
-geturl(unique): Generates the URL for a specific stock symbol search
-getdata(url): Fetches data from a given URL
-main(): Handles user input and displays stock information
+Run the script:
+Copy code
+python stock_screener.py
+Follow the prompts to search for stock information or financial news
 Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss the changes.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 License
 MIT
