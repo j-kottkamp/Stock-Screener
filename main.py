@@ -22,14 +22,14 @@ def main():
                 stock = input("What Stock do you want to know about?")
                 data = getdata(geturl(f"SYMBOL_SEARCH&keywords={stock}"))
                 if len(data) <2:
-                    raise BadRequest
+                    raise KeyError #need good descriptive error code
                 basicdata = {
                     "symbol" : data["bestMatches"][0]["1. symbol"],
                     "name"   : data["bestMatches"][0]["2. name"],
                     "region" : data["bestMatches"][0]["4. region"] }
                 price_data = getdata(geturl(f'TIME_SERIES_INTRADAY&{basicdata["symbol"]}=IBM&interval=5min'))
                 if len(price_data) <2:
-                    raise BadRequest
+                    raise KeyError
                 price = {
                     "open"   : price_data["Time Series (5min)"][0]["1. open"],
                     "high"   : price_data["Time Series (5min)"][0]["2. high"],
@@ -63,7 +63,7 @@ def main():
                 for i in newsfeed:
                     print(f"News!\n>>>{newsfeed['title']}<<<\n{newsfeed['summary']}\nSource:{newsfeed['newsurl']}\nExperts say, the Market is {newsfeed['flow']}.")
                     i+=1
-        except BadRequest:
+        except KeyError:
             print("Got no API answer")
         except:
             pass
