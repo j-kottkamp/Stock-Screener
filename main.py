@@ -1,4 +1,5 @@
 import requests
+
 from getAPI import api_key()
 
 def geturl(unique):
