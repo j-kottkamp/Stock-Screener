@@ -24,6 +24,3 @@ python stock_screener.py
 Follow the prompts to search for stock information or financial news
 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-License
-MIT
