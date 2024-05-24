@@ -52,6 +52,20 @@ def get_api_key():
     
     return api_key
 
+def api_key(): # a function that can be called in main.py to get an api key. this function checks when key expires and the gets a new one and returns
+    api_key = open("api_key.txt") # other storage can be impelmentet
+    if vaild_api_key(api_key):
+        return api_key
+    return get_api_key()
+
+
+def valid_api_key(api_key): # Implemt logic for cheking validity of key here
+    if Vaild:
+        return True
+    return False
+
+
+
 if __name__ == "__main__":
     try:
         api_key = get_api_key()
