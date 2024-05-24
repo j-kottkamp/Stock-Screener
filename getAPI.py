@@ -65,7 +65,6 @@ def valid_api_key(api_key): # Implemt logic for cheking validity of key here
     return False
 
 
-
 if __name__ == "__main__":
     try:
         api_key = get_api_key()
