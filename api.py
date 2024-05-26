@@ -133,6 +133,8 @@ def get_api_key(only_key=True):
         if api_key:
             record = convert_to_record(api_key)
             api_keys.append(record)
+            save_to_file(api_keys)
+            
             log(f"Returning Valid Api Key {record}")
             if only_key:
                 return record["api_key"]
