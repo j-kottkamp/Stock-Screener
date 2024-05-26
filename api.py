@@ -149,7 +149,7 @@ def get_api_key(only_key=True):
 ## API Requests
 
 def geturl(unique):
-    url = "https://www.alphavantage.co/query?function={unique}&apikey={get_api_key}"
+    url = f"https://www.alphavantage.co/query?function={unique}&apikey={get_api_key()}"
     log(f"Prepared url: {url}")
     return url
 

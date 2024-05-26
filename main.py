@@ -14,15 +14,12 @@ def main():
             if action =="1":
                 stock = input("What Stock do you want to know about?")
                 data = api.get(f"SYMBOL_SEARCH&keywords={stock}")
-                if len(data) <2:
-                    raise ValueError
+                
                 basicdata = {
                     "symbol" : data["bestMatches"][0]["1. symbol"],
                     "name"   : data["bestMatches"][0]["2. name"],
                     "region" : data["bestMatches"][0]["4. region"] }
                 price_data = api.get(f'TIME_SERIES_INTRADAY&{basicdata["symbol"]}=IBM&interval=5min')
-                if len(price_data) <2:
-                    raise ValueError
                 price = {
                     "open"   : price_data["Time Series (5min)"][0]["1. open"],
                     "high"   : price_data["Time Series (5min)"][0]["2. high"],
