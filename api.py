@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 ## Basics
 
 def log(text, level="needs to be implemented"): # Implement abilty to have difrent log levels i.a DEBUG PROCESS or whatever get creative also change each call then according to the levels
-    if 1 == 0:
+    if 1 == 1:
         print(text)
     else:
         pass
@@ -39,7 +39,7 @@ def get_new_api_token(email=random_email()):
         "first_text": "deprecated",
         "last_text": "deprecated",
         "occupation_text": "Investor",
-        "organization_text": "-",
+        "organization_text": generate_random_string(12),
         "email_text": email
     }
     headers = {
@@ -129,7 +129,7 @@ def get_api_key(only_key=True):
     trys = 10 # change this if we have used up too many email adresses
 
     for i in range(trys):
-        api_key = get_new_api_token()
+        api_key = get_new_api_token(random_email())
         if api_key:
             record = convert_to_record(api_key)
             api_keys.append(record)
