@@ -156,3 +156,10 @@ def get(unique):
     data = requests.get(url).json()   
     log(f"Got data back from API: {data}")
     return data
+
+if __name__ == "__main__":
+    try:
+        api_key = get_api_key()
+        print(f"Obtained API Key: {api_key}")
+    except Exception as e:
+        print(f"Error: {e}")
