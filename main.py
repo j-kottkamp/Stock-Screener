@@ -1,6 +1,6 @@
 import requests
 
-from getAPI import api_key()
+from api import api_key()
 
 def geturl(unique):
     return f'https://www.alphavantage.co/query?function={unique}&apikey={api_key()}'
