@@ -19,12 +19,15 @@ def main():
                     "symbol" : data["bestMatches"][0]["1. symbol"],
                     "name"   : data["bestMatches"][0]["2. name"],
                     "region" : data["bestMatches"][0]["4. region"] }
-                price_data = api.get(f'TIME_SERIES_INTRADAY&{basicdata["symbol"]}=IBM&interval=5min')
+                price_data = api.get(f'TIME_SERIES_INTRADAY&symbol={basicdata["symbol"]}&interval=5min')
+
+                five_min = price_data["Time Series (5min)"][list(price_data["Time Series (5min)"].keys())[0]]
+
                 price = {
-                    "open"   : price_data["Time Series (5min)"][0]["1. open"],
-                    "high"   : price_data["Time Series (5min)"][0]["2. high"],
-                    "low"    : price_data["Time Series (5min)"][0]["3. low"],
-                    "close"  : price_data["Time Series (5min)"][0]["4. close"] }
+                    "open"   : five_min["1. open"],
+                    "high"   : five_min["2. high"],
+                    "low"    : five_min["3. low"],
+                    "close"  : five_min["4. close"] }
                 basicdata["price"] = price
                 print(basicdata)
 
@@ -55,8 +58,6 @@ def main():
                     i+=1
         except ValueError:
             print("Got no API answer")
-        except:
-            pass
 
 
 
