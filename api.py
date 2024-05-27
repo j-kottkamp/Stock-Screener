@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 ## Basics
 
 def log(text, level="needs to be implemented"): # Implement abilty to have difrent log levels i.a DEBUG PROCESS or whatever get creative also change each call then according to the levels
-    if 1 == 1:
+    if 1 == 0:
         print(text)
     else:
         pass
