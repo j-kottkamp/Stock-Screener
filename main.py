@@ -7,8 +7,6 @@ topics = ["blockchain", "earnings", "ipo", "mergers_and_acquisitions", "financia
 
 
 def main():
-    global stock
-
     while True:
         try:
             if action =="1":
