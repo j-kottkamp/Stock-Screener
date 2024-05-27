@@ -131,7 +131,7 @@ def get_api_key(only_key=True):
     for i in range(trys):
         api_key = get_new_api_token(random_email())
         if api_key:
-            record = convert_to_record(api_key)
+            record = convert_to_record(api_key, 1)
             api_keys.append(record)
             save_to_file(api_keys)
             
