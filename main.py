@@ -13,7 +13,11 @@ def main():
                 stock = input("What Stock do you want to know about?")
                 data = api.get(f"SYMBOL_SEARCH&keywords={stock}")
                 log(f"Gotten Matches best on follwing input: {stock} <> Data: {data}")
+
                 best_matches = data["bestMatches"]  
+                if len(best_matches) == 0:
+                    raise KeyError
+                
                 basicdata = {
                     "symbol" : best_matches[0]["1. symbol"],
                     "name"   : best_matches[0]["2. name"],
